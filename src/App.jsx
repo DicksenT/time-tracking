@@ -1,3 +1,4 @@
+import Track from './Track'
 import profileImg from './images/image-jeremy.png'
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
 
         </ul>
       </div>
+      <ul className="track-lists">
+        <Track bgColor='hsl(15, 100%, 70%)' title='work' now={32} interval='week' last={36}/>
+      </ul>
     </main>
   )
 }

@@ -68,8 +68,38 @@ li{
   cursor: pointer;
   color: hsl(235, 45%, 61%);
   transition: 0.4s;
+  font-size: 18px;
+  width: 70px;
+  text-align: center;
 }
 .time-periods li:hover,
 .active{
   color: white;
+}
+.track{
+  background-color: hsl(235, 46%, 20%);
+  border-radius: 12px;
+  height: 120px;
+}
+.top-img-container{
+  height: 30%;
+}
+.top-img-container,
+.info{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.info{
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 70%;
+  
+}
+.headline,
+.time{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
