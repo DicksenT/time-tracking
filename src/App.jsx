@@ -30,7 +30,19 @@ function App() {
               <li key={item} className="time-interval" value={item} onClick={classSelect}>{item[0].toUpperCase() + item.slice(1)}</li>
             ))
           }
-
+          {
+            async function getData(){
+              try{
+              const response = await fetch('./data.json')
+              const data = await response.json()
+              console.log(data)
+              }
+              catch(error){
+                console.error(error)
+              }
+            }
+            
+          }
         </ul>
       </div>
       <ul className="track-lists">
