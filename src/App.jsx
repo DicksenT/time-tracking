@@ -1,16 +1,10 @@
+import { useState } from 'react'
 import Track from './Track'
 import profileImg from './images/image-jeremy.png'
 
 function App() {
 
-  const intervals = document.querySelectorAll('.time-interval')
-
-  const classSelect = e =>{
-    intervals.forEach((interval)=>{
-      interval.classList.remove('active')
-    })
-    e.target.classList.add('active')
-  }
+  const [interval, setInterval] = useState()
 
   return(
     <main>
@@ -27,7 +21,11 @@ function App() {
         <ul className="time-periods">
           {
             ['daily', 'weekly', 'monthly'].map((item) =>(
-              <li key={item} className="time-interval" value={item} onClick={classSelect}>{item[0].toUpperCase() + item.slice(1)}</li>
+              <li key={item} className={`time-interval ${interval === item ? 'active' : ''}`} 
+                  value={item} 
+                  onClick={() => setInterval(item)}>
+                    {item[0].toUpperCase() + item.slice(1)}
+              </li>
             ))
           }
           {
@@ -41,7 +39,6 @@ function App() {
                 console.error(error)
               }
             }
-            
           }
         </ul>
       </div>

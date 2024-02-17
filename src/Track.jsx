@@ -1,9 +1,12 @@
+
 import ellipsis from './images/icon-ellipsis.svg'
 
 function Track(props){
+    
     const bgColor = {
-        backgroundColor: props.bgColor
+        'backgroundColor': props.bgColor
     }
+
     return(
         <li className="track">
             <div className="top-img-container" style={bgColor}>
