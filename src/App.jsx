@@ -1,11 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Track from './Track'
 import profileImg from './images/image-jeremy.png'
 
 function App() {
 
   const [interval, setInterval] = useState()
-
+  const [fetchedData, setFetchedData] = useState()
+  useEffect(() =>{
+    async function getData(){
+      try{
+      const response = await fetch('./data.json')
+      if(!response.ok){
+        console.log(response.status)
+        return
+      }
+      const data = await response.json()
+      setFetchedData(data)
+      }
+      catch(error){
+        console.error(error)
+      }
+    }
+    getData()
+  },[interval])
+  console.log(fetchedData)
   return(
     <main>
       <div className="profile">
@@ -28,22 +46,22 @@ function App() {
               </li>
             ))
           }
-          {
-            async function getData(){
-              try{
-              const response = await fetch('./data.json')
-              const data = await response.json()
-              console.log(data)
-              }
-              catch(error){
-                console.error(error)
-              }
-            }
-          }
+
         </ul>
       </div>
       <ul className="track-lists">
-        <Track bgColor='hsl(15, 100%, 70%)' title='work' now={32} interval='week' last={36}/>
+          {
+            fetchedData && fetchedData.map((fdt)=>(
+              <Track bgColor={fdt.color} title={fdt.title} interval={interval} 
+                now={interval === 'daily' ? fdt.timeframes.daily.current :
+                    interval === 'weekly' ? fdt.timeframes.weekly.current : 
+                    fdt.timeframes.monthly.current}
+                last={interval === 'daily' ? fdt.timeframes.daily.previous:
+                      interval === 'weekly' ? fdt.timeframes.weekly.previous:
+                      fdt.timeframes.monthly.previous}
+                />
+            ))
+          }
       </ul>
     </main>
   )

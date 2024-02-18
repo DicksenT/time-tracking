@@ -7,6 +7,12 @@ function Track(props){
         'backgroundColor': props.bgColor
     }
 
+    const interval = {
+        'daily': 'day',
+        'weekly': 'week',
+        'monthly': 'month'
+    }
+
     return(
         <li className="track">
             <div className="top-img-container" style={bgColor}>
@@ -26,7 +32,7 @@ function Track(props){
                         {props.now}hrs
                     </span>
                     <p>
-                        This {props.interval} - {props.last}
+                        This {interval[props.interval]} - {props.last}
                     </p>
                 </div>
 
