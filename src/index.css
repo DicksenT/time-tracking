@@ -14,7 +14,6 @@ body{
   justify-content: center;
   background-color: hsl(226, 43%, 10%);
   flex-direction: column;
-  
   color: white;
 }
 main{
@@ -57,6 +56,9 @@ li{
   width: 100%;
   height: 100%;
 }
+.for{
+  color: hsl(236, 100%, 87%);
+}
 .time-periods{
   display: flex;
   justify-content: space-between;
@@ -88,6 +90,7 @@ li{
   height: 120px;
   width: 100%;
   position: relative;
+  
 }
 .top-img-container{
   height: 30%;
@@ -108,6 +111,7 @@ li{
   z-index: 99;
   position: absolute;
   width: 100%;
+  transition: 0.4s;
 }
 .headline,
 .time{
@@ -130,4 +134,83 @@ li{
 }
 .time p{
   color: hsl(236, 100%, 87%);
+}
+.ellipsis-container,
+.track{
+  cursor: pointer;
+}
+.track:hover .info{
+  background-color: hsl(246, 80%, 60%);
+}
+@media(min-width:1024px){
+  body{
+    height: 100dvh;
+  }
+  main{
+    display: flex;
+    width: 880px;
+    align-items: center;
+    justify-content: center;
+    height: 440px;
+  }
+  .profile{
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    margin-right: 20px;
+  }
+  .details{
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    gap: 20px;
+  }
+  .detail{
+    margin: 0;
+  }
+  .img-container{
+    width: 80px;
+    height: 80px;
+  }
+  .name{
+    font-size: 36px;
+    font-weight: 300;
+  }
+  .time-periods{
+    flex-direction: column;
+    padding: 20px;
+    align-items: start;
+  }
+  .time-periods li{
+    text-align: start;
+    font-size: 16px;
+  }
+  .track-lists{
+    display: grid;
+    grid-template-rows: 200px 200px;
+    grid-template-columns: 200px 200px 200px;
+  }
+  .track{
+    height: 100%;
+    border-radius: 12px;
+  }
+  .info{
+    border-radius: 12px;
+    height: 80%;
+    justify-content: space-around;
+  }
+  .top-img-container{
+    height: 20%;
+  }
+  .time{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .now{
+    font-size: 32px;
+  }
+  .time p{
+    font-size: 12px;
+  }
 }
