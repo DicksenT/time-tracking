@@ -22,8 +22,7 @@ function App() {
       }
     }
     getData()
-  },[interval])
-  console.log(fetchedData)
+  },[])
   return(
     <main>
       <div className="profile">
@@ -55,10 +54,14 @@ function App() {
               <Track bgColor={fdt.color} title={fdt.title} interval={interval} 
                 now={interval === 'daily' ? fdt.timeframes.daily.current :
                     interval === 'weekly' ? fdt.timeframes.weekly.current : 
-                    fdt.timeframes.monthly.current}
+                    interval === 'monthly'? fdt.timeframes.monthly.current:
+                    0}
                 last={interval === 'daily' ? fdt.timeframes.daily.previous:
                       interval === 'weekly' ? fdt.timeframes.weekly.previous:
-                      fdt.timeframes.monthly.previous}
+                      interval === 'monthly'? fdt.timeframes.monthly.previous:
+                      0}
+                img={fdt.img}
+                key={fdt.title}
                 />
             ))
           }
