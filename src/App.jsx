@@ -3,19 +3,20 @@ import Track from './Track'
 import profileImg from './images/image-jeremy.png'
 
 function App() {
-
+  //interval state
   const [interval, setInterval] = useState()
+  //fetchedData state to store fetched data in useEffect
   const [fetchedData, setFetchedData] = useState()
   useEffect(() =>{
     async function getData(){
       try{
-      const response = await fetch('./data.json')
-      if(!response.ok){
-        console.log(response.status)
-        return
-      }
-      const data = await response.json()
-      setFetchedData(data)
+        const response = await fetch('./data.json')
+        if(!response.ok){
+          console.log(response.status)
+          return
+        }
+        const data = await response.json()
+        setFetchedData(data)
       }
       catch(error){
         console.error(error)
@@ -38,8 +39,10 @@ function App() {
         <ul className="time-periods">
           {
             ['daily', 'weekly', 'monthly'].map((item) =>(
+              //add 'active' class only to clicked list if the current interval is same as the value
               <li key={item} className={`time-interval ${interval === item ? 'active' : ''}`} 
-                  value={item} 
+                  value={item}
+                  //add click function to set interval after it clicked
                   onClick={() => setInterval(item)}>
                     {item[0].toUpperCase() + item.slice(1)}
               </li>
@@ -50,8 +53,12 @@ function App() {
       </div>
       <ul className="track-lists">
           {
+            //only map the fetchedData after it finished fetch || fetchedData is not empty
+            //because useEffect or fetching need some time that can cause fetchedData to be empty or undefined
             fetchedData && fetchedData.map((fdt)=>(
               <Track bgColor={fdt.color} title={fdt.title} interval={interval} 
+              //only give props.now that are the same as interval
+              //useful for show multiple type of data ex.(daily, weekly or monthly)
                 now={interval === 'daily' ? fdt.timeframes.daily.current :
                     interval === 'weekly' ? fdt.timeframes.weekly.current : 
                     interval === 'monthly'? fdt.timeframes.monthly.current:

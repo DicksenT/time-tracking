@@ -3,26 +3,35 @@ import { useEffect, useState } from 'react'
 import ellipsis from './images/icon-ellipsis.svg'
 
 function Track(props){
+    //create count function to create changing content(0 to value)
     function count(status){
-    const [numUp, setNumUp] = useState(0)
-    useEffect(() =>{
-        setNumUp(0);
-        let duration = 500 / status
-        let counter = setInterval(()=>{
-            setNumUp(prevNumUp => {
-                if (prevNumUp < status) {
-                  return prevNumUp + 1;
-                } else {
-                  clearInterval(counter);
-                  return prevNumUp;
-                }
-              });
+        //initial useState
+        const [numUp, setNumUp] = useState(0)
+        //we use useEffect because we want this to keep running even after the component is mounted
+        useEffect(() =>{
+            //reset numUp to 0 because we want to reset the count everytime status or depedencies changed
+            setNumUp(0);
+            let duration = 500 / status
+            let counter = setInterval(()=>{
+                //we using functional update because if not, the initial numUp we pass to setInterval will not be changed
+                //that can cause of on nontstop running
+                //ex(we pass numUp that is 0 to setInterval, even the content change but the initial value of
+                //num up will stay on 0)
+                setNumUp(prevNumUp => {
+                    if (prevNumUp < status) {
+                    return prevNumUp + 1;
+                    } else {
+                    clearInterval(counter);
+                    return prevNumUp;
+                    }
+                });
               
-        },duration)
-        return ()=> {clearInterval(counter)}        
-    },[status])
-    return <span>{numUp}</span>
-}
+            },duration)
+            return ()=> {clearInterval(counter)}        
+        },[status])
+        //we return HTML component because we want to put it in page
+        return <span>{numUp}</span>
+    }
 
     const bgColor = {
         'backgroundColor': props.bgColor
