@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import ellipsis from './images/icon-ellipsis.svg'
+import ellipsis from './assets/icon-ellipsis.svg'
 
 function Track(props){
     //create count function to create changing content(0 to value)

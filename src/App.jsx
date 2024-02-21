@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Track from './Track'
-import profileImg from './images/image-jeremy.png'
+import profileImg from './assets/image-jeremy.png'
 
 function App() {
   //interval state
