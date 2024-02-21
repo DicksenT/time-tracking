@@ -10,7 +10,7 @@ function App() {
   useEffect(() =>{
     async function getData(){
       try{
-        const response = await fetch('./public/data.json')
+        const response = await fetch('./data.json')
         if(!response.ok){
           console.log(response.status)
           return
