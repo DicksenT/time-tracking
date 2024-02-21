@@ -135,8 +135,7 @@ li{
 .time p{
   color: hsl(236, 100%, 87%);
 }
-.ellipsis-container,
-.track{
+.ellipsis-container{
   cursor: pointer;
 }
 .track:hover .info{
