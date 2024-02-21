@@ -16,7 +16,7 @@
       }
     },
     "color": "hsl(15, 100%, 70%)",
-    "img": "./src/assets/icon-work.svg"
+    "img": "icon-work.svg"
   },
   {
     "title": "Play",
@@ -35,7 +35,7 @@
       }
     },
     "color": "hsl(195, 74%, 62%)",
-    "img": "./icon-play.svg"
+    "img": "icon-play.svg"
   },
   {
     "title": "Study",
@@ -54,7 +54,7 @@
       }
     },
     "color": "hsl(348, 100%, 68%)",
-    "img": "./assets/icon-study.svg"
+    "img": "icon-study.svg"
   },
   {
     "title": "Exercise",
@@ -73,7 +73,7 @@
       }
     },
     "color": "hsl(145, 58%, 55%)",
-    "img": "./assets/icon-exercise.svg"
+    "img": "icon-exercise.svg"
   },
   {
     "title": "Social",
