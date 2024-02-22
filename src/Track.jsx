@@ -63,7 +63,7 @@ function Track(props){
                         {count(props.now)}hrs
                     </span>
                     <p>
-                        this {interval[props.interval]} - {count(props.last)}hrs
+                        Last {interval[props.interval]} - {count(props.last)}hrs
                     </p>
                 </div>
             </div>
